@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Slide Out Box Menu | Codrops</title>
+		<meta name="description" content="A menu with boxes that slide out in an irregular grid" />
+		<meta name="keywords" content="menu, grid, boxes, reveal, css grid, web design, javascript" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>
+		document.documentElement.className = "js";
+		var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
+		supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+		</script>
+	</head>
+	<body class="loading">
+		<svg class="hidden">
+			<symbol id="icon-arrow" viewBox="0 0 24 24">
+				<title>arrow</title>
+				<polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 " />
+			</symbol>
+			<symbol id="icon-drop" viewBox="0 0 24 24">
+				<title>drop</title>
+				<path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z" />
+				<path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z" />
+			</symbol>
+			<symbol id="icon-instagram" viewBox="0 0 24 24">
+				<title>instagram</title>
+				<path d="M17 1h-10c-3.3 0-6 2.7-6 6v10c0 3.3 2.7 6 6 6h10c3.3 0 6-2.7 6-6v-10c0-3.3-2.7-6-6-6zM21 17c0 2.2-1.8 4-4 4h-10c-2.2 0-4-1.8-4-4v-10c0-2.2 1.8-4 4-4h10c2.2 0 4 1.8 4 4v10z"></path>
+				<path d="M12.8 7c-0.5-0.1-1-0.1-1.5 0-2.7 0.4-4.6 3-4.2 5.7 0.2 1.3 0.9 2.5 2 3.3 0.9 0.6 1.9 1 3 1 0.2 0 0.5 0 0.7-0.1 1.3-0.2 2.5-0.9 3.3-2s1.1-2.4 0.9-3.7c-0.3-2.2-2-3.9-4.2-4.2zM14.5 13.7c-0.5 0.6-1.2 1.1-2 1.2-1.6 0.2-3.2-0.9-3.4-2.5-0.3-1.6 0.9-3.2 2.5-3.4 0.1 0 0.3 0 0.4 0s0.3 0 0.4 0c1.3 0.2 2.3 1.2 2.5 2.5 0.2 0.8 0 1.6-0.4 2.2z"></path>
+				<path d="M16.8 5.8c-0.2 0.2-0.3 0.4-0.3 0.7s0.1 0.5 0.3 0.7c0.2 0.2 0.5 0.3 0.7 0.3 0.3 0 0.5-0.1 0.7-0.3s0.3-0.5 0.3-0.7c0-0.3-0.1-0.5-0.3-0.7-0.4-0.4-1-0.4-1.4 0z"></path>
+			</symbol>
+			<symbol id="icon-twitter" viewBox="0 0 24 24">
+				<title>twitter</title>
+				<path d="M23.6 2.2c-0.3-0.2-0.8-0.2-1.1 0-0.7 0.5-1.5 0.9-2.3 1.2-2-1.8-5.1-1.9-7.2-0.1-1.3 1.1-2 2.6-2 4.2-2.9-0.2-5.5-1.7-7.2-4.1-0.2-0.3-0.5-0.4-0.9-0.4s-0.7 0.3-0.8 0.6c-0.1 0.1-1.1 2.5-1 5.4 0.1 2.5 1.1 5.7 4.8 8-1.5 0.7-3.2 1-4.9 1-0.4 0-0.9 0.3-1 0.7s0.1 0.9 0.5 1.1c2.5 1.4 5.2 2.1 7.7 2.1s4.9-0.6 7.1-1.9c4.3-2.4 6.7-7 6.7-12.5 0-0.2 0-0.3 0-0.5 1-1.1 1.7-2.4 2-3.8 0.1-0.4-0.1-0.8-0.4-1zM20.2 6c-0.2 0.2-0.3 0.6-0.3 0.9 0.1 0.2 0.1 0.4 0.1 0.6 0 4.8-2.1 8.7-5.7 10.8-2.8 1.6-6.1 2-9.4 1.2 1.3-0.4 2.5-0.9 3.6-1.7 0.4-0.2 0.5-0.5 0.5-0.9s-0.3-0.7-0.6-0.8c-5.8-2.6-5.6-7.5-5-10 2.2 2.2 5.3 3.5 8.6 3.4 0.5 0 1-0.5 1-1v-1c0-1 0.4-2 1.2-2.7 1.4-1.3 3.7-1.1 4.9 0.3 0.3 0.3 0.7 0.4 1 0.3 0.2-0.1 0.5-0.1 0.7-0.2-0.2 0.3-0.4 0.5-0.6 0.8z"/>
+			</symbol>
+			<symbol id="icon-facebook" viewBox="0 0 24 24">
+				<title>facebook</title>
+				<path d="M18 7c0.6 0 1-0.4 1-1v-4c0-0.6-0.4-1-1-1h-3c-3.3 0-6 2.7-6 6v2h-2c-0.6 0-1 0.4-1 1v4c0 0.6 0.4 1 1 1h2v7c0 0.6 0.4 1 1 1h4c0.6 0 1-0.4 1-1v-7h2c0.5 0 0.9-0.3 1-0.8l1-4c0.1-0.3 0-0.6-0.2-0.9s-0.5-0.3-0.8-0.3h-3v-2h3zM14 11h2.7l-0.5 2h-2.2c-0.6 0-1 0.4-1 1v7h-2v-7c0-0.6-0.4-1-1-1h-2v-2h2c0.6 0 1-0.4 1-1v-3c0-2.2 1.8-4 4-4h2v2h-2c-1.1 0-2 0.9-2 2v3c0 0.6 0.4 1 1 1z"/>
+			</symbol>
+			<symbol id="icon-cart">
+				<title>cart</title>
+				<path d="M11 21c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+				<path d="M22 21c0 1.105-0.895 2-2 2s-2-0.895-2-2c0-1.105 0.895-2 2-2s2 0.895 2 2z"></path>
+				<path d="M23.8 5.4c-0.2-0.3-0.5-0.4-0.8-0.4h-16.2l-0.8-4.2c-0.1-0.5-0.5-0.8-1-0.8h-4c-0.6 0-1 0.4-1 1s0.4 1 1 1h3.2l0.8 4.2c0 0 0 0.1 0 0.1l1.7 8.3c0.3 1.4 1.5 2.4 2.9 2.4 0 0 0 0 0.1 0h9.7c1.5 0 2.7-1 3-2.4l1.6-8.4c0-0.3 0-0.6-0.2-0.8zM20.4 14.2c-0.1 0.5-0.5 0.8-1 0.8h-9.7c-0.5 0-0.9-0.3-1-0.8l-1.5-7.2h14.6l-1.4 7.2z"></path>
+			</symbol>
+			<symbol id="icon-caret" viewBox="0 0 16 24">
+				<title>caret</title>
+				<path d="M15.45 2.8L12.65 0l-12 12 12 12 2.8-2.8-9.2-9.2z"/>
+			</symbol>
+		</svg>
+		<main>
+			<div class="message">To see the box navigation please view on desktop</div>
+			<div class="content content--fixed">
+				<div class="codrops-header">
+					<div class="codrops-links">
+						<a class="codrops-icon codrops-icon--prev" href="" title="Previous Demo">
+							<svg class="icon icon--arrow">
+								<use xlink:href="#icon-arrow"></use>
+							</svg>
+						</a>
+						<a class="codrops-icon codrops-icon--drop" href="" title="Back to the article">
+							<svg class="icon icon--drop">
+								<use xlink:href="#icon-drop"></use>
+							</svg>
+						</a>
+					</div>
+					<h2 class="codrops-header__title">Slide Out Box Menu</h2>
+					<a class="github" href="https://github.com/codrops/SlideOutBoxMenu/">GitHub</a>
+				</div>
+				<div class="page-header">
+					<h1 class="page-header__title">
+						<span class="page-header__title-inner">Matylda</span>
+						<span class="page-header__title-sub">man &amp; woman</span>
+					</h1>
+					<ul class="social">
+						<li class="social__item">
+							<a class="social__item-link" href="http://www.twitter.com/codrops">
+								<svg class="icon icon--social icon--twitter">
+									<use xlink:href="#icon-twitter"></use>
+								</svg>
+							</a>
+						</li>
+						<li class="social__item">
+							<a class="social__item-link" href="https://www.instagram.com/codropsss/">
+								<svg class="icon icon--social icon--instagram">
+									<use xlink:href="#icon-instagram"></use>
+								</svg>
+							</a>
+						</li>
+						<li class="social__item">
+							<a class="social__item-link" href="http://www.facebook.com/pages/Codrops/159107397912">
+								<svg class="icon icon--social icon--facebook">
+									<use xlink:href="#icon-facebook"></use>
+								</svg>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="tagline">Fine clothing since 1987</p>
+				<h4 class="category">Spring / Summer 2019</h4>
+			</div>
+			<div class="slideshow">
+				<div class="slide">
+					<div class="slide__wrap">
+						<div class="slide__img" style="background-image: url(img/1.jpg);"></div>
+						<div class="slide__title-wrap">
+							<h3 class="slide__title">Fancy Hats</h3>
+							<h4 class="slide__subtitle">Pivot gnarly ho-ho drop in mute-air shoveit airwalk</h4>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__wrap">
+						<div class="slide__img" style="background-image: url(img/2.jpg);"></div>
+						<div class="slide__title-wrap">
+							<h3 class="slide__title">Shirt Mania</h3>
+							<h4 class="slide__subtitle">Christ air pivot nosebone feeble quarter pipe</h4>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__wrap">
+						<div class="slide__img" style="background-image: url(img/3.jpg);"></div>
+						<div class="slide__title-wrap">
+							<h3 class="slide__title">Flow Scarfs</h3>
+							<h4 class="slide__subtitle">Layback goofy footed transfer birdie Julien Stranger</h4>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__wrap">
+						<div class="slide__img" style="background-image: url(img/4.jpg);"></div>
+						<div class="slide__title-wrap">
+							<h3 class="slide__title">Back Secrets</h3>
+							<h4 class="slide__subtitle">Nollie risers salad grind frigid air the faction</h4>
+						</div>
+					</div>
+				</div>
+			</div><!-- /slideshow -->
+			<nav class="boxnav">
+				<button class="boxnav__item boxnav__item--prev">
+					<svg class="icon icon--caret">
+						<use xlink:href="#icon-caret"></use>
+					</svg>
+				</button>
+				<div class="boxnav__item boxnav__item--label">
+					<span class="boxnav__label boxnav__label--current">1</span>
+					<span class="boxnav__label boxnav__label--total"></span>
+				</div>
+				<button class="boxnav__item boxnav__item--next">
+					<svg class="icon icon--caret-rot">
+						<use xlink:href="#icon-caret"></use>
+					</svg>
+				</button>
+			</nav>
+			<button class="action action--details">+ details</button>
+			<!-- details -->
+			<div class="details-wrap">
+				<div class="details">
+					<div class="details__item details__item-img" data-direction="ttb">
+						<div class="details__inner">
+							<img src="img/small/1.jpg" alt="Some image"/>
+						</div>
+					</div>
+					<div class="details__item details__item-sizes">
+						<div class="details__inner details__inner--sizes">
+							<span class="details__size">XL</span>
+							<span class="details__size">L</span>
+							<span class="details__size details__size--selected">M</span>
+							<span class="details__size">S</span>
+						</div>
+					</div>
+					<div class="details__item details__item--addtocart" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--addtocart">
+								<svg class="icon icon--cart"><use xlink:href="#icon-cart"></use></svg>
+							</button>
+						</div>
+					</div>
+					<div class="details__item details__item-colors" data-direction="ttb">
+						<div class="details__inner details__inner--grid details__inner--colors">
+							<span class="details__color details__color--white">White</span>
+							<span class="details__color details__color--red">Red</span>
+							<span class="details__color details__color--black">Black</span>
+							<span class="details__color details__color--blue">Blue</span>
+							<span class="details__color details__color--beige">Beige</span>
+							<span class="details__color details__color--sky">Sky</span>
+						</div>
+					</div>
+					<div class="details__item details__item-price">
+						<div class="details__inner details__inner--price">$89</div>
+					</div>
+					<div class="details__item details__item--close" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--close">Close</button>
+						</div>
+					</div>
+				</div><!-- /details -->
+				<div class="details">
+					<div class="details__item details__item-img" data-direction="ttb">
+						<div class="details__inner">
+							<img src="img/small/2.jpg" alt="Some image"/>
+						</div>
+					</div>
+					<div class="details__item details__item-sizes">
+						<div class="details__inner details__inner--sizes">
+							<span class="details__size">XL</span>
+							<span class="details__size">L</span>
+							<span class="details__size details__size--selected">M</span>
+							<span class="details__size">S</span>
+						</div>
+					</div>
+					<div class="details__item details__item--addtocart" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--addtocart">
+								<svg class="icon icon--cart"><use xlink:href="#icon-cart"></use></svg>
+							</button>
+						</div>
+					</div>
+					<div class="details__item details__item-colors" data-direction="ttb">
+						<div class="details__inner details__inner--grid details__inner--colors">
+							<span class="details__color details__color--white">White</span>
+							<span class="details__color details__color--red">Red</span>
+							<span class="details__color details__color--black">Black</span>
+							<span class="details__color details__color--blue">Blue</span>
+							<span class="details__color details__color--beige">Beige</span>
+							<span class="details__color details__color--sky">Sky</span>
+						</div>
+					</div>
+					<div class="details__item details__item-price">
+						<div class="details__inner details__inner--price">$119</div>
+					</div>
+					<div class="details__item details__item--close" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--close">Close</button>
+						</div>
+					</div>
+				</div><!-- /details -->
+				<div class="details">
+					<div class="details__item details__item-img" data-direction="ttb">
+						<div class="details__inner">
+							<img src="img/small/3.jpg" alt="Some image"/>
+						</div>
+					</div>
+					<div class="details__item details__item-sizes">
+						<div class="details__inner details__inner--sizes">
+							<span class="details__size">XL</span>
+							<span class="details__size">L</span>
+							<span class="details__size details__size--selected">M</span>
+							<span class="details__size">S</span>
+						</div>
+					</div>
+					<div class="details__item details__item--addtocart" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--addtocart">
+								<svg class="icon icon--cart"><use xlink:href="#icon-cart"></use></svg>
+							</button>
+						</div>
+					</div>
+					<div class="details__item details__item-colors" data-direction="ttb">
+						<div class="details__inner details__inner--grid details__inner--colors">
+							<span class="details__color details__color--white">White</span>
+							<span class="details__color details__color--red">Red</span>
+							<span class="details__color details__color--black">Black</span>
+							<span class="details__color details__color--blue">Blue</span>
+							<span class="details__color details__color--beige">Beige</span>
+							<span class="details__color details__color--sky">Sky</span>
+						</div>
+					</div>
+					<div class="details__item details__item-price">
+						<div class="details__inner details__inner--price">$65</div>
+					</div>
+					<div class="details__item details__item--close" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--close">Close</button>
+						</div>
+					</div>
+				</div><!-- /details -->
+				<div class="details">
+					<div class="details__item details__item-img" data-direction="ttb">
+						<div class="details__inner">
+							<img src="img/small/4.jpg" alt="Some image"/>
+						</div>
+					</div>
+					<div class="details__item details__item-sizes">
+						<div class="details__inner details__inner--sizes">
+							<span class="details__size">XL</span>
+							<span class="details__size">L</span>
+							<span class="details__size details__size--selected">M</span>
+							<span class="details__size">S</span>
+						</div>
+					</div>
+					<div class="details__item details__item--addtocart" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--addtocart">
+								<svg class="icon icon--cart"><use xlink:href="#icon-cart"></use></svg>
+							</button>
+						</div>
+					</div>
+					<div class="details__item details__item-colors" data-direction="ttb">
+						<div class="details__inner details__inner--grid details__inner--colors">
+							<span class="details__color details__color--white">White</span>
+							<span class="details__color details__color--red">Red</span>
+							<span class="details__color details__color--black">Black</span>
+							<span class="details__color details__color--blue">Blue</span>
+							<span class="details__color details__color--beige">Beige</span>
+							<span class="details__color details__color--sky">Sky</span>
+						</div>
+					</div>
+					<div class="details__item details__item-price">
+						<div class="details__inner details__inner--price">$99</div>
+					</div>
+					<div class="details__item details__item--close" data-direction="ttb">
+						<div class="details__inner">
+							<button class="action action--close">Close</button>
+						</div>
+					</div>
+				</div><!-- /details -->
+			</div>
+		</main>
+		<script src="js/imagesloaded.pkgd.min.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/demo.js"></script>
+	</body>
+</html>
